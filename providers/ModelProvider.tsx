@@ -1,22 +1,10 @@
 "use client";
 
+import AuthModel from "@/components/AuthModel";
 import Modal from "@/components/Modal";
 import React, { useEffect, useState } from "react";
-import * as Dialog from "@radix-ui/react-dialog";
 
-interface ModelProviderProps {
-  children: React.ReactNode;
-  isOpen: boolean;
-  title: string;
-  description: string;
-}
-
-const ModelProvider: React.FC<ModelProviderProps> = ({
-  children,
-  isOpen,
-  title,
-  description,
-}) => {
+const ModelProvider = () => {
   const [isMounted, setIsMounted] = useState(false);
 
   useEffect(() => {
@@ -26,7 +14,7 @@ const ModelProvider: React.FC<ModelProviderProps> = ({
   if (isMounted) {
     return (
       <>
-        <Modal />
+        <AuthModel />
       </>
     );
   }

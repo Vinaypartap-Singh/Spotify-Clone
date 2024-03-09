@@ -4,7 +4,10 @@ import { twMerge } from "tailwind-merge";
 interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {}
 
 const Button = forwardRef<HTMLButtonElement, ButtonProps>(
-  ({ className, children, disabled, type = "button", ...props }, ref) => {
+  (
+    { className, children, onClick, disabled, type = "button", ...props },
+    ref
+  ) => {
     return (
       <button
         disabled={disabled}
@@ -25,6 +28,7 @@ const Button = forwardRef<HTMLButtonElement, ButtonProps>(
     `,
           className
         )}
+        onClick={onClick}
       >
         {children}
       </button>
