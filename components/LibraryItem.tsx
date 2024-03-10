@@ -1,8 +1,24 @@
+"use client";
+
+import useAuthModel from "@/hooks/useAuthModel";
+import { useUser } from "@/hooks/userUser";
 import React from "react";
 import { AiOutlinePlus } from "react-icons/ai";
 import { TbPlaylist } from "react-icons/tb";
+import Button from "./Button";
+import useUploadModel from "@/hooks/useUploadModel";
 
 const LibraryItem = () => {
+  const { user } = useUser();
+  const authModel = useAuthModel();
+  const uploadModel = useUploadModel();
+  const onClick = () => {
+    if (!user) {
+      return authModel.onOpen();
+    }
+
+    return uploadModel.onOpen();
+  };
   return (
     <div>
       <div className="px-6 py-3 space-y-6">
@@ -11,7 +27,9 @@ const LibraryItem = () => {
             <TbPlaylist size={22} className="text-neutral-500" />
             <p className="text-neutral-500">Your Library</p>
           </div>
-          <AiOutlinePlus size={18} className="text-neutral-500" />
+          <Button className="bg-transparent w-fit p-0" onClick={onClick}>
+            <AiOutlinePlus size={18} className="text-neutral-500" />
+          </Button>
         </div>
 
         <div>
