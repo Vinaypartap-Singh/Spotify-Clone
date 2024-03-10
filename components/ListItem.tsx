@@ -8,7 +8,7 @@ import { IoPlay } from "react-icons/io5";
 interface ListItemProps {
   name: string;
   image: string;
-  href: string;
+  href?: string;
 }
 
 const ListItem: React.FC<ListItemProps> = ({ name, image, href }) => {
