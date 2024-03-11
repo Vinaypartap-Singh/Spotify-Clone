@@ -7,8 +7,14 @@ import { AiOutlinePlus } from "react-icons/ai";
 import { TbPlaylist } from "react-icons/tb";
 import Button from "./Button";
 import useUploadModel from "@/hooks/useUploadModel";
+import { Song } from "@/types";
+import MediaItem from "./MediaItem";
 
-const LibraryItem = () => {
+interface libraryItemProps {
+  songs: Song[];
+}
+
+const LibraryItem: React.FC<libraryItemProps> = ({ songs }) => {
   const { user } = useUser();
   const authModel = useAuthModel();
   const uploadModel = useUploadModel();
@@ -33,7 +39,9 @@ const LibraryItem = () => {
         </div>
 
         <div>
-          <h2 className="text-neutral-500">List Of Songs</h2>
+          {songs.map((song) => (
+            <MediaItem songs={song} onClick={() => {}} />
+          ))}
         </div>
       </div>
     </div>

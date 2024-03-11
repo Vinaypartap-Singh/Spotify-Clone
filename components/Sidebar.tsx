@@ -8,12 +8,14 @@ import Box from "./Box";
 import SideBarItems from "./SideBarItems";
 import LibraryItem from "./LibraryItem";
 import Header from "./Header";
+import { Song } from "@/types";
 
 interface SidebarProps {
   children: React.ReactNode;
+  songs: Song[];
 }
 
-const Sidebar: React.FC<SidebarProps> = ({ children }) => {
+const Sidebar: React.FC<SidebarProps> = ({ children, songs }) => {
   const pathname = usePathname();
 
   const routes = useMemo(
@@ -22,13 +24,13 @@ const Sidebar: React.FC<SidebarProps> = ({ children }) => {
         icon: HiHome,
         label: "Home",
         active: pathname !== "/search",
-        href: "/search",
+        href: "/",
       },
       {
         icon: BiSearch,
         label: "Search",
         active: pathname === "/search",
-        href: "/",
+        href: "/search",
       },
     ],
     []
@@ -57,7 +59,7 @@ const Sidebar: React.FC<SidebarProps> = ({ children }) => {
         </Box>
 
         <Box className="overflow-y-auto h-full">
-          <LibraryItem />
+          <LibraryItem songs={songs} />
         </Box>
       </div>
 
