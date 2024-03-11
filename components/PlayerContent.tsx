@@ -1,5 +1,5 @@
 "use client";
-
+// @ts-ignore
 import useSound from "use-sound";
 import { useEffect, useState } from "react";
 import { BsPauseFill, BsPlayFill } from "react-icons/bs";
@@ -94,7 +94,7 @@ const PlayerContent: React.FC<PlayerContentProps> = ({ song, songUrl }) => {
     <div className="grid grid-cols-2 md:grid-cols-3 h-full">
       <div className="flex w-full justify-start">
         <div className="flex items-center gap-x-4">
-          <MediaItem songs={song} />
+          <MediaItem songs={song} onClick={handlePlay} />
           <LikeButton songId={song.id} />
         </div>
       </div>
