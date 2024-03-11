@@ -16,10 +16,13 @@ const ListItem: React.FC<ListItemProps> = ({ name, image, href }) => {
 
   const onClick = () => {
     // add auth logic here
-    router.push(href);
+    router.push(href!);
   };
   return (
-    <div className="relative flex group items-center rounded-md overflow-hidden gap-x-4 bg-neutral-100/10 hover:bg-neutral-100/20 transition pr-4">
+    <div
+      className="relative flex group items-center rounded-md overflow-hidden gap-x-4 bg-neutral-100/10 hover:bg-neutral-100/20 transition pr-4"
+      onClick={onClick}
+    >
       <div className="relative min-h-[64px] min-w-[64px]">
         <Image className="object-cover" fill src={image} alt={name} />
       </div>

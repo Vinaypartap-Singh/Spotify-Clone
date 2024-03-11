@@ -2,6 +2,7 @@ import getLikedSongs from "@/actions/getLikedSongs";
 import Header from "@/components/Header";
 import LikedContent from "@/components/LikedContent";
 import Image from "next/image";
+import { useRouter } from "next/router";
 
 const revalidate = 0;
 

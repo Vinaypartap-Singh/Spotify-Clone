@@ -9,6 +9,7 @@ import Button from "./Button";
 import useUploadModel from "@/hooks/useUploadModel";
 import { Song } from "@/types";
 import MediaItem from "./MediaItem";
+import useOnPlay from "@/hooks/useOnPlay";
 
 interface libraryItemProps {
   songs: Song[];
@@ -18,6 +19,7 @@ const LibraryItem: React.FC<libraryItemProps> = ({ songs }) => {
   const { user } = useUser();
   const authModel = useAuthModel();
   const uploadModel = useUploadModel();
+  const onPlay = useOnPlay(songs);
   const onClick = () => {
     if (!user) {
       return authModel.onOpen();
@@ -40,7 +42,7 @@ const LibraryItem: React.FC<libraryItemProps> = ({ songs }) => {
 
         <div>
           {songs.map((song) => (
-            <MediaItem songs={song} onClick={() => {}} />
+            <MediaItem songs={song} onClick={(id: string) => onPlay(id)} />
           ))}
         </div>
       </div>
